@@ -21,7 +21,7 @@ const options: DataSourceOptions & SeederOptions = {
   logging: process.env.DB_LOGGING === 'true' || true,
   synchronize: false,
   migrationsRun: false,
-  migrations: ['src/**/migrations/*.ts'],
+  migrations: ['src/**/migrations/*.js'],
   migrationsTableName: 'migration_table',
   seeds: ['src/**/seeds/*{.ts,.js}'],
   factories: ['src/**/factories/*{.ts,.js}'],
