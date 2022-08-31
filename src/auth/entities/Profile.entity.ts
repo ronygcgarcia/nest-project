@@ -1,16 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Profile {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  email: string;
-
-  @Column()
-  password: string;
-
-  @Column()
-  active: boolean;
+  name: string;
 }
