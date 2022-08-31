@@ -7,11 +7,16 @@ import { AppDataSource } from '../ormconfig';
 import { DataSource } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import {
+  DbConnectOptions,
+  DbValidatorsModule,
+} from '@youba/nestjs-dbvalidator';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource.options),
+    DbValidatorsModule.register(AppDataSource.options as DbConnectOptions),
     AuthModule,
     UsersModule,
   ],

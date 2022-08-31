@@ -1,15 +1,18 @@
+import { IsUnique } from '@youba/nestjs-dbvalidator';
 import {
   IsNotEmpty,
   IsString,
   Matches,
   MaxLength,
   MinLength,
+  Validate,
 } from 'class-validator';
 import { Match } from './Match.decorator';
 
 export class RegisterAuthDto {
   @IsString()
   @IsNotEmpty()
+  @Validate(IsUnique, [{ table: '"user"', column: 'email' }])
   public email: string;
 
   @IsString()
