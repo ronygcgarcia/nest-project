@@ -1,11 +1,11 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { plainToClass } from 'class-transformer';
 import { AuthService } from './auth.service';
-import { LoginRequestAuthDto } from './dto/login-request.dto';
 import { loginResponseAuthDto } from './dto/login-response.dto';
 import { RegisterRequestAuthDto } from './dto/register-request-auth.dto';
 import { RegisterResponseAuthDto } from './dto/register-response-auth.dto';
+import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @ApiTags('Authentication')
 @Controller()
@@ -16,19 +16,10 @@ export class AuthController {
     description: 'Access token to authenticate',
     type: loginResponseAuthDto,
   })
+  @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(
-    @Body() loginAuthDto: LoginRequestAuthDto,
-  ): Promise<loginResponseAuthDto> {
-    const user = await this.authService.validateUser(
-      loginAuthDto.email,
-      loginAuthDto.password,
-    );
-    const token = await this.authService.login({
-      email: user.email,
-      id: user.id,
-    });
-    return plainToClass(loginResponseAuthDto, token);
+  async login(@Request() req) {
+    return req.user;
   }
 
   @ApiCreatedResponse({
