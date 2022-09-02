@@ -6,7 +6,6 @@ import { LoginRequestAuthDto } from './dto/login-request.dto';
 import { loginResponseAuthDto } from './dto/login-response.dto';
 import { RegisterRequestAuthDto } from './dto/register-request-auth.dto';
 import { RegisterResponseAuthDto } from './dto/register-response-auth.dto';
-import { User } from './entities/User.entity';
 
 @ApiTags('Authentication')
 @Controller()
