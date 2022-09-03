@@ -11,6 +11,7 @@ import {
   DbConnectOptions,
   DbValidatorsModule,
 } from '@youba/nestjs-dbvalidator';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import {
     DbValidatorsModule.register(AppDataSource.options as DbConnectOptions),
     AuthModule,
     UsersModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
