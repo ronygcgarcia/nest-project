@@ -12,6 +12,7 @@ import {
   DbValidatorsModule,
 } from '@youba/nestjs-dbvalidator';
 import { ProfileModule } from './profile/profile.module';
+import { PermissionModule } from './permission/permission.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ProfileModule } from './profile/profile.module';
     AuthModule,
     UsersModule,
     ProfileModule,
+    PermissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
