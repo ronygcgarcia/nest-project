@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { Profile } from './Profile.entity';
 
 @Entity()
 export class Permission {
@@ -7,4 +14,8 @@ export class Permission {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Profile)
+  @JoinTable()
+  profiles: Profile[];
 }

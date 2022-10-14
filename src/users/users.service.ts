@@ -15,6 +15,8 @@ export class UsersService {
       where: {
         email,
       },
+      relations: ['profiles.permissions'],
+      relationLoadStrategy: 'join',
     });
   }
 
