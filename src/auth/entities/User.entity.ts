@@ -24,11 +24,11 @@ export class User {
   @Column()
   active: boolean;
 
-  @ManyToMany((type) => Profile)
+  @ManyToMany(() => Profile)
   @JoinTable()
   profiles: Profile[];
 
-  @ManyToMany((type) => Permission)
+  @ManyToMany(() => Permission)
   @JoinTable()
   permissions: Permission[];
 }

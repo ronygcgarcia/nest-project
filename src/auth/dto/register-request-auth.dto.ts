@@ -8,7 +8,7 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import { Match } from './Match.decorator';
+import { Match } from '../decorators/Match.decorator';
 
 export class RegisterRequestAuthDto {
   @IsString()
