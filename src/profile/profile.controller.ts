@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { Profile } from '../auth/entities/Profile.entity';
+import { Profile } from '../auth/entities/profile.entity';
 import { ProfileService } from './profile.service';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Permission } from '../auth/decorators/Permission.decorator';

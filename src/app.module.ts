@@ -13,6 +13,7 @@ import {
 } from '@youba/nestjs-dbvalidator';
 import { ProfileModule } from './profile/profile.module';
 import { PermissionModule } from './permission/permission.module';
+import { AuthMethodsModule } from './auth-methods/auth-methods.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { PermissionModule } from './permission/permission.module';
     UsersModule,
     ProfileModule,
     PermissionModule,
+    AuthMethodsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

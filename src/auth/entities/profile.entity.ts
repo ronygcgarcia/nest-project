@@ -6,7 +6,7 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
-import { Permission } from './Permission.entity';
+import { Permission } from './permission.entity';
 
 @Entity()
 export class Profile {

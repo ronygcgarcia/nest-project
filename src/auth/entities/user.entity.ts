@@ -4,10 +4,12 @@ import {
   PrimaryGeneratedColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
 } from 'typeorm';
-import { Profile } from './Profile.entity';
-import { Permission } from './Permission.entity';
+import { Profile } from './profile.entity';
+import { Permission } from './permission.entity';
 import { IsEmail } from 'class-validator';
+import { UserToAuthMethod } from './user-auth-method.entity';
 
 @Entity()
 export class User {
@@ -24,6 +26,11 @@ export class User {
   @Column()
   active: boolean;
 
+  @Column({
+    nullable: true,
+  })
+  two_factor_auth_enable: boolean;
+
   @ManyToMany(() => Profile)
   @JoinTable()
   profiles: Profile[];
@@ -31,4 +38,10 @@ export class User {
   @ManyToMany(() => Permission)
   @JoinTable()
   permissions: Permission[];
+
+  @OneToMany(
+    () => UserToAuthMethod,
+    (userToAuthMethod) => userToAuthMethod.user,
+  )
+  user_auth_methods: UserToAuthMethod[];
 }
